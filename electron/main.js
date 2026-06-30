@@ -1,4 +1,12 @@
-const { app, BrowserWindow, Tray, Menu, ipcMain, dialog } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  Tray,
+  Menu,
+  ipcMain,
+  dialog,
+  nativeImage
+} = require("electron");
 const path = require("path");
 const fs = require("fs");
 const { saveItem } = require("./services/saveService");
@@ -18,8 +26,8 @@ function createWindow() {
     }
   };
 
-  const iconPath = path.join(__dirname, "assets", "icon.png");
-  if (fs.existsSync(iconPath)) {
+  const iconPath = resolveAssetIcon(["icon.png", "icon.ico"]);
+  if (iconPath) {
     windowOptions.icon = iconPath;
   }
 
@@ -35,10 +43,38 @@ function createWindow() {
   });
 }
 
-function createTray() {
-  const iconPath = path.join(__dirname, "assets", "tray.png");
+function resolveAssetIcon(names) {
+  for (const name of names) {
+    const iconPath = path.join(__dirname, "assets", name);
+    if (fs.existsSync(iconPath)) {
+      return iconPath;
+    }
+  }
 
-  tray = new Tray(iconPath);
+  return null;
+}
+
+function loadTrayIcon() {
+  const trayPath = path.join(__dirname, "assets", "tray.png");
+  if (fs.existsSync(trayPath)) {
+    return nativeImage.createFromPath(trayPath);
+  }
+
+  const iconPath = resolveAssetIcon(["icon.png", "icon.ico"]);
+  if (iconPath) {
+    return nativeImage.createFromPath(iconPath).resize({ width: 32, height: 32 });
+  }
+
+  return null;
+}
+
+function createTray() {
+  const trayIcon = loadTrayIcon();
+  if (!trayIcon || trayIcon.isEmpty()) {
+    return;
+  }
+
+  tray = new Tray(trayIcon);
 
   const menu = Menu.buildFromTemplate([
     {
