@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>myFiles2</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>myFiles2</h1>
+    <p class="subtitle">Save useful links, text, and attachments.</p>
+
+    <section class="card">
+      <div class="tabs">
+        <button class="tab active" data-tab="url">Upload URL</button>
+        <button class="tab" data-tab="text">Paste Text</button>
+        <button class="tab" data-tab="file">Upload Attachment</button>
+      </div>
+
+      <div id="urlPanel" class="panel active">
+        <input id="urlInput" type="text" placeholder="Paste URL here..." />
+      </div>
+
+      <div id="textPanel" class="panel">
+        <textarea id="textInput" placeholder="Paste text here..."></textarea>
+      </div>
+
+      <div id="filePanel" class="panel">
+        <button id="chooseFileBtn">Choose Attachment</button>
+        <p id="filePath">No file selected</p>
+      </div>
+
+      <button id="saveBtn" class="save">Save</button>
+
+      <p id="statusMessage"></p>
+    </section>
+  </main>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

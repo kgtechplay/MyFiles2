@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    font-family: Segoe UI, Arial, sans-serif;
+    background: #f3f5f7;
+  }
+  
+  .app {
+    max-width: 620px;
+    margin: 40px auto;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  
+  .subtitle {
+    text-align: center;
+    color: #666;
+  }
+  
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  }
+  
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #f7f7f7;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .tab.active {
+    background: #1f6feb;
+    color: white;
+    border-color: #1f6feb;
+  }
+  
+  .panel {
+    display: none;
+  }
+  
+  .panel.active {
+    display: block;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+  }
+  
+  textarea {
+    min-height: 150px;
+  }
+  
+  .save {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #238636;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .success {
+    color: #238636;
+    font-weight: 600;
+  }
+  
+  .failure {
+    color: #d1242f;
+    font-weight: 600;
+  }
